@@ -4,22 +4,16 @@
 Project Overview
 This project fetches hourly weather data from the Open-Meteo API, stores it in a PostgreSQL database, calculates daily moving averages, generates weather alerts via email, and performs weather data analysis using SQL. Additionally, it includes instructions to create an interactive weather dashboard using Power BI.
 
-✏️Features
-Fetch hourly weather data (temperature, humidity, precipitation) for a specified location.
+## ✏️Features
 
-Store data in PostgreSQL (weather_update table).
-
-Calculate 7-day moving averages of temperature, humidity, and precipitation.
-
-Store moving averages in a separate table (moving_average).
-
-Send email alerts for extreme weather conditions (e.g., heatwaves).
-
-Scheduled data fetching every minute (can be adjusted).
-
-SQL queries for weather analysis including hottest/coolest days, rainfall chances, and temperature extremes.
-
-Interactive Power BI dashboard based on the weather and moving average data.
+>Fetch hourly weather data (temperature, humidity, precipitation) for a specified location.
+>Store data in PostgreSQL (weather_update table).
+>Calculate 7-day moving averages of temperature, humidity, and precipitation.
+>Store moving averages in a separate table (moving_average).
+>Send email alerts for extreme weather conditions (e.g., heatwaves).
+>Scheduled data fetching every minute (can be adjusted).
+>SQL queries for weather analysis including hottest/coolest days, rainfall chances, and temperature extremes.
+>Interactive Power BI dashboard based on the weather and moving average data.
 
 Setup Instructions
 Prerequisites
@@ -36,7 +30,8 @@ bash
 Copy
 Edit
 pip install requests pandas sqlalchemy schedule psycopg2-binary
-Step 1: Database Setup
+
+### Step 1: Database Setup
 Create a PostgreSQL database named weather_data.
 
 Create tables with the following structure:
@@ -60,21 +55,21 @@ CREATE TABLE moving_average (
     moving_avg_humidity FLOAT,
     moving_avg_precipitation FLOAT
 );
-Step 2: Fetch and Insert Weather Data
+### Step 2: Fetch and Insert Weather Data
 The fetch_weather() function pulls data from Open-Meteo API.
 
 The insert_data() function inserts hourly data into weather_update and computes/stores daily moving averages into moving_average.
 
 The schedule library runs insert_data() every minute (customize interval as needed).
 
-Step 3: Weather Alert Email
+### Step 3: Weather Alert Email
 send_weather_alert() sends emails for extreme conditions.
 
 Customize alert logic (e.g., temperature > threshold) and call this function to notify users.
 
 Use Gmail SMTP with an app password.
 
-📑Step 4: SQL Weather Analysis Queries
+### Step 4: SQL Weather Analysis Queries
 Run these queries in PostgreSQL to gain insights:
 
 Today's Weather:
@@ -142,7 +137,7 @@ LIMIT 1;
 
 
 
-🌄Step 5: Power BI Dashboard Creation
+### Step 5: Power BI Dashboard Creation
 Import data from PostgreSQL tables weather_update and moving_average.
 
 Create visuals for:
@@ -158,3 +153,9 @@ Rainfall days and temperature extremes.
 Use filters/slicers by date and location.
 
 Schedule dashboard refresh to sync with database updates.
+
+![Weather Analysis Dashboard](https://github.com/Abhaykush584/Projects-Dashboards/blob/main/dashboard%20ss/Screenshot%202025-06-05%20102009.png)
+![Weather Analysis Dashboard](https://github.com/Abhaykush584/Projects-Dashboards/blob/main/dashboard%20ss/Screenshot%202025-06-05%20095134.png)
+![Weather Analysis Dashboard](https://github.com/Abhaykush584/Projects-Dashboards/blob/main/dashboard%20ss/Screenshot%202025-06-05%20095143.png)
+![Weather Analysis Dashboard](https://github.com/Abhaykush584/Projects-Dashboards/blob/main/dashboard%20ss/Screenshot%202025-06-05%20102021.png)
+![Weather Analysis Dashboard](https://github.com/Abhaykush584/Projects-Dashboards/blob/main/dashboard%20ss/Screenshot%202025-06-05%20095159.png)
